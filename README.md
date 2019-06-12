@@ -6,8 +6,7 @@
 2. [Project Motivation](#motivation)
 3. [CRISP-DM Process](#crispdmprocess)
 4. [File Descriptions](#files)
-5. [Results](#results)
-6. [Licensing, Authors, and Acknowledgements](#licensing)
+5. [Licensing, Authors, and Acknowledgements](#licensing)
 
 ## Installation <a name="installation"></a>
 
@@ -84,10 +83,6 @@ For this project, I was interested in using AirBnB data to better understand:
 ## File Descriptions <a name="files"></a>
 
 There are 2 notebooks available here to showcase work related to the above questions.  Each of the notebooks is exploratory in searching through the data pertaining to the questions showcased by the notebook title.  Markdown cells were used to assist in walking through the thought process for individual steps.  
-
-## Results<a name="results"></a>
-
-Work-In-Progress
 
 ## Licensing, Authors, Acknowledgements<a name="licensing"></a>
 
