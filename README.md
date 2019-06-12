@@ -36,7 +36,7 @@ For this project, I was interested in using AirBnB data to better understand:
 
    We will primary use the listings data for the price analysis. It has some descriptive textual data about the listing itself and the host. In addition to some categorical,  ordinal and numeric features. Our target variable here is numeric and is the price. 
 
-2. ### Prepare Data: 
+3. ### Prepare Data: 
 
    For price analysis on the listings data. We first removed columns that had 1 value (or mostly one value with very few other values) and also data that is all NaNs or almost all NaNs. 
 
@@ -48,15 +48,23 @@ For this project, I was interested in using AirBnB data to better understand:
 
    Some other columns were processed separately as described in the notebook.
 
-3. ### Model Data:
+   
+
+   For Calendar prices analysis,  first the listings that had prices all year long were analyzed first. String data were changed from t/f to True/False and from $## to ##.00. Some random trends were plotted to get an idea of the distribution of prices. A recurrent change was present, that is listings have a different price on weekend nights (Friday and Saturday). 
+
+4. ### Model Data:
 
    For price analysis on the listings data, we apparently needed to use regression models to predict the price. Three models were compared and tuned: Support Vector Machine Regression (Linear Kernel performed best), Gradient Boosted Trees Regressors and the plain old Linear Regression. Their results were almost the same and no model was chosen over the other. 
 
-4. ### Results:
+   
+
+   For Calendar prices analysis,  later on we wanted to visualize the trends of multiple trends together. To do that we normalized each graph and added them all together and then normalized the output. In order to add the trends of the listings that did not have values all year long, the missing values was filled with the mean of the available prices. Only listings with at least prices available half-year long. My reasoning of filling with mean is that on normalizing it will have no affect when adding the variables. 
+
+5. ### Results:
 
    1. #### How well can we predict the listing prices ? 
 
-      Our model has a Mean Absolute Error of $33~36 which means that we can trust our model price accuracy in the range of 33~36 dollars, which is not a strong model. The R2 score is around 0.5 which says that our model is intermediately good.  
+      Our model has a Mean Absolute Error of $32 which means that we can trust our model price accuracy in the range of about 32 dollars, which is not a strong model. The R2 score is around 0.57 which says that our model is intermediately good.  
 
    2. #### What correlates with Prices ? 
 
@@ -73,16 +81,48 @@ For this project, I was interested in using AirBnB data to better understand:
       Looking at the host attributes, superhosts usually have higher prices. Also, rows that had missing acceptance and response rates are attributed with a higher price which needs some investigation on why that is the case. Having a high response rate is attributed with lower prices, which means that picky hosts usually have higher prices. 
 
       Having a Doorman also is attributed to higher prices. 
+      
+   3.  #### Can we find a specific distribution of price changes during a whole calendar year ?
 
-5. ### Deploy:
+      Yes, we find two finding from analyzing the trend of prices:
+
+      1. A majority of hosts have a higher price on weekend nights i.e. Fridays and Saturdays.
+      2. There appears to be a trend of increase of prices from the beginning of the year and it peaks during the summer period especially from June to Septembers. After that the prices decrease a little back to the mean value. 
+
+   4. #### What are the similarities and differences between the Boston and Seattle Data? 
+
+      1. Prices:
+
+         Our best model performed worse than on the Seattle Data set with $43 of mean absolute error an 0.50 R2 score.
+
+         Comparing the top weights of LinearSVR model we find several similarities and differences. 
+
+         Number of bedrooms, accommodates and being an Entire home are among the top features that correlate positively with the price in both datasets.  Also, being an Entire home or shared are among the top features that correlate negatively with the price in both datasets.  
+
+         The main difference noticed is the presence of longitude and latitude in the top positively correlating features. The suggest that the easter and norther you get the higher the prices tend to be. 
+
+      2. Calender Price trends:
+
+         In addition to the normal trend of difference between Weekends and Weekdays in price, there appears to be spikes in prices in mid June, mid July and in October. 
+
+6. ### Deploy:
 
    Price Analysis:
 
    Based on our analysis we think this info in addition to some NLP analysis of the description can be used to help hosts better tune their listings to attract customers and inform them about the expected range of the prices.
 
+   For Calendar prices analysis:
+
+   
+
 ## File Descriptions <a name="files"></a>
 
-There are 2 notebooks available here to showcase work related to the above questions.  Each of the notebooks is exploratory in searching through the data pertaining to the questions showcased by the notebook title.  Markdown cells were used to assist in walking through the thought process for individual steps.  
+1. Understanding.ipynb: This notebooks imports the datasets for the first time and begin to get the data and business understanding. 
+2. PrepareAssesQ1_andQ2.ipynb: This notebook analyzes the listings.csv data and attempts to predict prices and find correlations between features and price. This is the main notebook used to answer questions 1 and 2. 
+3. PrepareAssesQ1_andQ2_boston.ipynb: Same process repeated on the Boston data in an attempt to compare them together. 
+4. Calendar_analysis.ipynb: This notebook aims to analyze the prices troughout the year from the calendar.csv data.
+5. Calendar_analysis_boston.ipynb: Same process repeated on the Boston data in an attempt to compare them together. 
+6. seattle/* and boston-airbnb-open-data/* hold the data sets used for analysis. sources are in the next session.
 
 ## Licensing, Authors, Acknowledgements<a name="licensing"></a>
 
