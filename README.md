@@ -107,13 +107,8 @@ For this project, I was interested in using AirBnB data to better understand:
 
 6. ### Deploy:
 
-   Price Analysis:
-
    Based on our analysis we think this info in addition to some NLP analysis of the description can be used to help hosts better tune their listings to attract customers and inform them about the expected range of the prices.
 
-   For Calendar prices analysis:
-
-   
 
 ## File Descriptions <a name="files"></a>
 
